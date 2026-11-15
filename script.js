@@ -22,7 +22,7 @@ const loader = new GLTFLoader();
 let phone;
 
 // ПУТЬ БЕЗ ПАПКИ models (файл лежит в корне)
-loader.load('iphone_16_pro_max.glb', (gltf) => {
+  loader.load('iphone_16_pro_max.glb', (gltf) => {
   phone = gltf.scene;
   phone.scale.set(1.5, 1.5, 1.5); 
   phone.position.set(2, 0, 0); 
