@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&display=swap');
 
 body { margin: 0; padding: 0; background-color: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
@@ -42,22 +42,40 @@ body { margin: 0; padding: 0; background-color: #000; color: #fff; font-family: 
 .power-slide .text-block h2 { color: #00ffcc; text-shadow: 0 0 60px rgba(0, 255, 204, 0.6); }
 .power-slide .text-block p { color: #88ccbb; }
 
-/* КНОПКА (ТЕПЕРЬ ОГРОМНАЯ) */
 .cta { align-items: center; text-align: center; }
 .cta h2 { font-size: 18rem; margin-bottom: 60px; font-weight: 900; color: #fff; line-height: 0.9; }
 .cta .btn {
-    pointer-events: auto; 
-    padding: 30px 100px; /* Огромные отступы */
-    font-size: 3rem; /* Огромный шрифт */
-    background: #fff; 
-    color: #000; 
-    border-radius: 70px; 
-    text-decoration: none; 
-    font-weight: 900; 
-    transition: 0.3s;
+    pointer-events: auto; padding: 30px 100px; font-size: 3rem;
+    background: #fff; color: #000; border-radius: 70px; text-decoration: none; font-weight: 900; transition: 0.3s;
     box-shadow: 0 0 50px rgba(255,255,255,0.4);
 }
-.cta .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 80px rgba(255,255,255,0.8);
+.cta .btn:hover { transform: scale(1.05); box-shadow: 0 0 80px rgba(255,255,255,0.8); }
+
+/* ================= АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ================= */
+@media (max-width: 768px) {
+    .slide {
+        padding: 0 5%;
+        justify-content: flex-start; 
+        padding-top: 15vh;
+    }
+    
+    .text-block { text-align: center; } 
+    .slide:nth-child(2) .text-block,
+    .slide:nth-child(4) .text-block { margin: 0; margin-top: 0; }
+    
+    .text-block h2 { 
+        font-size: 4rem; 
+        letter-spacing: -2px;
+        margin-bottom: 15px;
+    }
+    .text-block p { 
+        font-size: 1.2rem; 
+        max-width: 100%; 
+        margin: 0 auto;
+    }
+    
+    .cta h2 { font-size: 4rem; margin-bottom: 30px; }
+    .cta .btn { padding: 20px 40px; font-size: 1.5rem; }
+    
+    #scene-container { z-index: 0; }
 }
