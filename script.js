@@ -1,6 +1,3 @@
-$projectPath = "C:\Users\User\.claude\projects\C--WINDOWS-system32\iphone-3d-site"
-
-$js = @"
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
@@ -21,8 +18,8 @@ const flashLight = new THREE.PointLight(0xffffff, 0, 20);
 const loader = new GLTFLoader();
 let phone;
 
-// ПУТЬ БЕЗ ПАПКИ models (файл лежит в корне)
-  loader.load('iphone_16_pro_max.glb', (gltf) => {
+// Путь к файлу (он лежит в корне)
+loader.load('iphone_16_pro_max.glb', (gltf) => {
   phone = gltf.scene;
   phone.scale.set(1.5, 1.5, 1.5); 
   phone.position.set(2, 0, 0); 
@@ -32,8 +29,6 @@ let phone;
   flashLight.position.set(0.5, 0.6, 0.9); 
 
   scene.add(phone);
-
-  // Вызываем анимацию для первого слайда
   updateSlide(0);
 });
 
@@ -102,6 +97,3 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
-"@
-Set-Content -Path "$projectPath\script.js" -Value $js -Encoding UTF8
-Write-Host "Путь к модели исправлен! Ctrl+F5." -ForegroundColor Green
