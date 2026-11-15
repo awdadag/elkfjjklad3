@@ -1,4 +1,7 @@
-﻿import * as THREE from 'three';
+$projectPath = "C:\Users\User\.claude\projects\C--WINDOWS-system32\iphone-3d-site"
+
+$js = @"
+import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const container = document.getElementById('scene-container');
@@ -18,7 +21,8 @@ const flashLight = new THREE.PointLight(0xffffff, 0, 20);
 const loader = new GLTFLoader();
 let phone;
 
-loader.load('models/iphone_16_pro_max.glb', (gltf) => {
+// ПУТЬ БЕЗ ПАПКИ models (файл лежит в корне)
+loader.load('iphone_16_pro_max.glb', (gltf) => {
   phone = gltf.scene;
   phone.scale.set(1.5, 1.5, 1.5); 
   phone.position.set(2, 0, 0); 
@@ -29,7 +33,7 @@ loader.load('models/iphone_16_pro_max.glb', (gltf) => {
 
   scene.add(phone);
 
-  // ВЫЗЫВАЕМ АНИМАЦИЮ ДЛЯ ПЕРВОГО СЛАЙДА СРАЗУ ПОСЛЕ ЗАГРУЗКИ
+  // Вызываем анимацию для первого слайда
   updateSlide(0);
 });
 
@@ -46,7 +50,7 @@ function updateSlide(index) {
         
         if (index === 0) { 
             targetX = 2; targetAngle = -Math.PI / 2;
-            glowColor = 'rgba(245, 230, 211, 0.4)'; // Молочное сияние
+            glowColor = 'rgba(245, 230, 211, 0.4)'; 
         } 
         else if (index === 1) { 
             targetX = 0; targetY = -0.5; targetZ = 2.5; targetAngle = -Math.PI / 2;
@@ -98,3 +102,6 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+"@
+Set-Content -Path "$projectPath\script.js" -Value $js -Encoding UTF8
+Write-Host "Путь к модели исправлен! Ctrl+F5." -ForegroundColor Green
